@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature Converter</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			text-align: center;
+			margin-top: 75px;
+			background-image: linear-gradient(to top,rgba(121,255,155,1),rgba(121,255,155,1));
+		}
+		#main{
+			height:550px;
+			width: 500px;
+			/*border: 1px solid; */
+			border-radius: 10px;
+			background-image: repeating-linear-gradient(to bottom,rgba(18,18,245,1),rgba(89,62,247,0));
+			box-shadow: 4px 4px 4px;
+		}
+		#box{
+			display: flex;
+			justify-content: center;
+			text-align: center;
+			margin-top: 75px;
+			font-size: 25px;
+		}
+		#b1{
+			height:90px;
+			width: 250px;
+			/*border: 1px solid;*/			
+		}
+		#b2{
+			height:90px;
+			width: 250px;
+			/*border: 1px solid;*/
+		}
+		button{
+			margin-top: 100px;
+			padding: 15px;
+			padding-right: 60px;
+			padding-left: 60px;
+			border-radius: 30px;
+			/*border: 1px solid;*/
+			background-color: orange;
+			font-size: 15px;
+		}
+		#inp{
+			height: 25px;
+		}
+		#inp1{
+			height: 33px;
+			width: 115px;
+		}
+		#inp2{
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="main">
+		<h1>Temperature Converter</h1>
+		<div id="box">
+			<div id="b1">
+				<h4>Degree:</h4>
+				<input type="number" name="inp" size="15" id="inp">
+			</div>
+			<div id="b2">
+				<h4>Type:</h4>
+				<select name="" id="inp1">
+					<option value="" disabled selected>Select</option>
+        			<option value="Celcius">Celcius</option>
+        			<option value="Fahrenheit">Fahrenheit</option>
+        			
+    			</select>
+			</div>
+		</div>
+		<button onclick="convert()">Convert</button>
+		  <div id="result">
+		  	<h4>Result:</h4>
+		  	<input type="text" name="" id="inp2">
+		  	</div>
+	</div>
+	<script>
+            function convert() {
+                var temp = document.getElementById("inp");
+                var result = document.getElementById("inp2");
+
+                var e = document.getElementById("inp1");
+                var optionSelIndex = e.options[e.selectedIndex].value;
+                var optionSelectedText = e.options[e.selectedIndex].text;
+
+                    if (temp.value !== "") {
+                        if (optionSelIndex == 0) {
+                                alert("Please select a unit");
+                        } else {
+                            if (optionSelectedText === "Fahrenheit") {
+                                result.value = ((temp.value - 32) * 5) / 9 + "°C";
+                            }
+                            if (optionSelectedText === "Celcius") {
+                                result.value = (temp.value * 9) / 5 + 32 + "°F";
+                            }
+                        }
+                    } else {
+                        alert("Please enter temperature to convert");
+                        }
+                    }
+        </script>
+</body>
+</html>
